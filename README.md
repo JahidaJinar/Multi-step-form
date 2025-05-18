@@ -1,5 +1,7 @@
 # Frontend Mentor - Multi-step form
 
+Visit My Design: https://jahidajinar.github.io/Multi-step-form/
+
 ![Design preview for the Multi-step form coding challenge](preview.jpg)
 
 ## Welcome! 👋
