@@ -1,0 +1,625 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background: #f0f2f5;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  display: flex;
+  width: 900px;
+  min-height: 500px;
+  padding: 20px;
+}
+
+.sidebar {
+  background: hsl(213, 96%, 18%);
+  background-image: url("./assets/images/bg-sidebar-desktop.svg");
+  background-size: cover;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 274px;
+  min-height: 568px;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.step-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.step-number {
+  width: 33px;
+  height: 33px;
+  border: 1px solid hsl(206, 94%, 87%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 700;
+  font-family: "Ubuntu", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.step-item.active .step-number {
+  background: hsl(206, 94%, 87%);
+  color: hsl(213, 96%, 18%);
+  border-color: hsl(206, 94%, 87%);
+}
+
+.step-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.step-counter {
+  color: hsl(229, 24%, 87%);
+  font-size: 12px;
+  font-family: "Ubuntu", sans-serif;
+  text-transform: uppercase;
+}
+
+.step-title {
+  color: white;
+  font-weight: 700;
+  font-family: "Ubuntu", sans-serif;
+  letter-spacing: 1px;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+/* Main content area */
+.content-area {
+  flex: 1;
+  padding: 30px;
+  position: relative;
+}
+
+.step-content {
+  display: none;
+  animation: fadeIn 0.5s ease;
+}
+
+.step-content.active {
+  display: block;
+}
+
+/* Button Style */
+.button-group {
+  position: absolute;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  gap: 350px;
+}
+
+.btn-next {
+  background: #4a90e2;
+  color: white;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-next:hover {
+  background: #09315b;
+}
+
+.btn-prev {
+  background-color: white;
+  color: #797676;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-prev:hover {
+  color: #2e2a2a;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.personal-form {
+  margin-top: 2rem;
+}
+
+.form-header h1 {
+  color: hsl(213, 96%, 18%);
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-header p {
+  color: hsl(231, 11%, 63%);
+  margin-bottom: 2rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.input-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+label {
+  color: hsl(213, 96%, 18%);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.error-message {
+  color: hsl(354, 84%, 57%);
+  font-weight: 700;
+  font-size: 0.8rem;
+  display: none;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: "Ubuntu", sans-serif;
+}
+
+.form-input:focus {
+  border-color: hsl(243, 100%, 62%);
+  outline: none;
+}
+
+.form-input::placeholder {
+  color: hsl(231, 11%, 63%);
+  font-weight: 500;
+}
+
+/* Error State */
+.form-input.invalid {
+  border-color: hsl(354, 84%, 57%);
+  background: rgba(354, 84%, 57%, 0.05);
+}
+
+.form-input.invalid + .error-message {
+  display: block;
+}
+
+/* Step 2 Specific Styles */
+.plan-options {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.plan-input {
+  display: none !important;
+}
+
+.plan-card {
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.plan-input:checked + .plan-content {
+  border: 2px solid hsl(243, 71%, 63%);
+  background: hsl(217, 100%, 97%);
+}
+
+.plan-card:hover .plan-content {
+  border-color: hsl(243, 100%, 62%);
+  transform: translateY(-2px);
+}
+
+.plan-content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  height: 100%;
+  padding: 10px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.plan-content img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 1.5rem;
+}
+
+.plan-details h3 {
+  color: hsl(213, 96%, 18%);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+.price {
+  color: hsl(231, 11%, 63%);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.promo {
+  color: hsl(213, 96%, 18%);
+  font-size: 0.8rem;
+  margin-top: 0.3rem;
+  display: none;
+  font-weight: 500;
+}
+
+/* Billing Toggle style */
+.billing-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
+  background: hsl(217, 100%, 97%);
+  padding: 1rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+}
+
+.toggle-switch {
+  position: relative;
+  width: 45px;
+  height: 22px;
+  background: hsl(213, 96%, 18%);
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+.slider {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  background: white;
+  border-radius: 50%;
+  top: 4px;
+  left: 4px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.monthly,
+.yearly {
+  color: hsl(231, 11%, 63%);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+}
+
+.billing-yearly .slider {
+  transform: translateX(23px);
+}
+
+.billing-yearly .promo {
+  display: block;
+}
+
+.active-period {
+  color: hsl(213, 96%, 18%);
+}
+
+/* Step 3 Specific Styles */
+/* Addon Item Container */
+.addon-item {
+  position: relative;
+  display: block;
+}
+
+/* Custom Checkbox Styling */
+.addon-input {
+  position: absolute;
+  opacity: 10;
+  width: 20px;
+  height: 20px;
+  top: 50%;
+  left: 15px;
+  transform: translateY(-50%);
+  z-index: 1;
+  cursor: pointer;
+}
+.addon-options {
+  display: grid;
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.addon-card {
+  border: 1px solid hsl(229, 24%, 87%);
+  border-radius: 8px;
+  width: 100%;
+  padding: 1.2rem 1.2rem 1.2rem 3.5rem; /* Left padding increase */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.addon-card:hover {
+  border-color: hsl(243, 100%, 62%);
+}
+
+.addon-input {
+  width: 20px;
+  height: 20px;
+  accent-color: hsl(243, 100%, 62%);
+}
+
+.addon-details {
+  flex-grow: 1;
+}
+
+.addon-title {
+  color: hsl(213, 96%, 18%);
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.addon-description {
+  color: hsl(231, 11%, 63%);
+  font-size: 0.9rem;
+}
+
+.addon-price {
+  color: hsl(243, 100%, 62%);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Checked State */
+.addon-input:checked + .addon-card {
+  border-color: hsl(243, 100%, 62%);
+  background: hsl(217, 100%, 97%);
+}
+
+/* Step 4 Styles */
+.summary-card {
+  background: hsl(217, 100%, 97%);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.plan-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.plan-info h3 {
+  color: hsl(213, 96%, 18%);
+  font-size: 1rem;
+}
+
+.change-link {
+  color: hsl(231, 11%, 63%);
+  text-decoration: underline;
+  font-size: 0.9rem;
+}
+
+.addon-summary {
+  display: grid;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.addon-item {
+  display: flex;
+  justify-content: space-between;
+  color: hsl(231, 11%, 63%);
+}
+
+.total-summary {
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem;
+  color: hsl(231, 11%, 63%);
+}
+
+.total-price {
+  color: hsl(243, 100%, 62%);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+/* Confirmation Success */
+.confirmation-success {
+  text-align: center;
+  padding: 2rem;
+}
+
+.confirmation-icon {
+  width: 80px;
+  margin-top: 7rem;
+  margin-bottom: 2rem;
+}
+
+.confirmation-success h1 {
+  color: hsl(213, 96%, 18%);
+  margin-bottom: 1rem;
+}
+
+.confirmation-success p {
+  color: hsl(231, 11%, 63%);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    border-radius: 0;
+    padding: 0;
+    background: hsl(217, 100%, 97%);
+  }
+
+  .sidebar {
+    background-image: url("./assets/images/bg-sidebar-mobile.svg");
+    background-size: cover;
+    flex-direction: row;
+    justify-content: center;
+    gap: 1rem;
+    width: 100%;
+    min-height: 172px;
+    border-radius: 0;
+    padding: 2rem 0;
+  }
+
+  .step-info {
+    display: none;
+  }
+
+  .content-area {
+    padding: 2rem 3rem;
+    margin-top: -3rem;
+    margin-bottom: 20rem;
+    margin-left: 1.5rem;
+    background: white;
+    border-radius: 10px;
+    width: calc(100% - 3rem);
+    min-height: auto;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .form-header h1 {
+    font-size: 1.5rem !important;
+  }
+
+  .plan-options {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+
+  .plan-card {
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+  }
+
+  .plan-content {
+    width: 100%;
+    height: 100%;
+  }
+
+  .plan-content {
+    gap: 0.5rem;
+    flex-direction: row;
+  }
+
+  .billing-toggle {
+    margin-top: 1rem;
+    padding: 0.8rem;
+  }
+
+  .addon-card {
+    padding: 1rem;
+    padding-left: 3rem;
+  }
+
+  .summary-card {
+    padding: 1rem;
+  }
+
+  .button-group {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 15px 20px;
+    gap: 20px;
+    justify-content: space-between;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-next {
+    padding: 14px 30px;
+    font-size: 15px;
+    border-radius: 6px;
+  }
+
+  .btn-prev {
+    padding: 14px 20px;
+    font-size: 15px;
+  }
+
+  @media (hover: none) {
+    .btn-next:hover {
+      background: #09315b;
+    }
+    .btn-prev:hover {
+      color: #2e2a2a;
+    }
+  }
+
+  .confirmation-success {
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+
+  .confirmation-icon {
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-input {
+    font-size: 0.95rem;
+    padding: 0.75rem;
+  }
+
+  .plan-details h3 {
+    font-size: 1rem;
+  }
+
+  .price {
+    font-size: 0.9rem;
+  }
+
+  .addon-title {
+    font-size: 0.95rem;
+  }
+
+  .addon-price {
+    font-size: 0.85rem;
+  }
+}
